@@ -1,0 +1,40 @@
+{
+  "classes": [
+    {
+      "obfuscated": "rs.e.k",
+      "named": "com.spk.definitions.ConfigProfile",
+      "fields": [
+        {
+          "obfuscated": "a",
+          "named": "id"
+        },
+        {
+          "obfuscated": "b",
+          "named": "name"
+        },
+        {
+          "obfuscated": "c",
+          "named": "sync"
+        },
+        {
+          "obfuscated": "d",
+          "named": "active"
+        }
+      ]
+    }
+  ],
+  "accessTransformers": [
+    {
+      "class": "com.spk.definitions.ConfigProfile",
+      "member": "id",
+      "access": "PUBLIC",
+      "removeFinal": false
+    },
+    {
+      "class": "com.spk.definitions.ConfigProfile",
+      "member": "name",
+      "access": "PUBLIC",
+      "removeFinal": false
+    }
+  ]
+}

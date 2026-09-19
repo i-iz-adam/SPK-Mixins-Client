@@ -15,6 +15,11 @@ public class MappingParser {
 
     public static MappingSet parseJson(InputStream stream) {
         MappingSet mappings = new MappingSet();
+        parseJson(stream, mappings);
+        return mappings;
+    }
+
+    public static void parseJson(InputStream stream, MappingSet mappings) {
         Gson gson = new Gson();
         JsonObject root = gson.fromJson(new InputStreamReader(stream, StandardCharsets.UTF_8), JsonObject.class);
 
@@ -61,7 +66,5 @@ public class MappingParser {
                 mappings.addAccessTransformer(new AccessTransformer(targetClass, member, desc, level, removeFinal));
             });
         }
-
-        return mappings;
     }
 }

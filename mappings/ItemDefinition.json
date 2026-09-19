@@ -1,0 +1,50 @@
+{
+  "classes": [
+    {
+      "obfuscated": "rs.d.k",
+      "named": "com.spk.definitions.ItemDefinition",
+      "fields": [
+        {
+          "obfuscated": "w",
+          "named": "itemName"
+        },
+        {
+          "obfuscated": "x",
+          "named": "description"
+        },
+        {
+          "obfuscated": "i",
+          "named": "itemId"
+        },
+        {
+          "obfuscated": "W",
+          "named": "certTemplateId"
+        },
+        {
+          "obfuscated": "I",
+          "named": "value"
+        }
+      ]
+    }
+  ],
+  "accessTransformers": [
+    {
+      "class": "com.spk.definitions.ItemDefinition",
+      "member": "itemName",
+      "access": "PUBLIC",
+      "removeFinal": false
+    },
+    {
+      "class": "com.spk.definitions.ItemDefinition",
+      "member": "description",
+      "access": "PUBLIC",
+      "removeFinal": false
+    },
+    {
+      "class": "com.spk.definitions.ItemDefinition",
+      "member": "itemId",
+      "access": "PUBLIC",
+      "removeFinal": false
+    }
+  ]
+}

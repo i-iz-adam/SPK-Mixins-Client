@@ -23,8 +23,12 @@ import java.util.jar.JarInputStream;
 public class HeuristicMappingResolver {
 
     public static MappingSet resolveMappings(File targetJar, InputStream fingerprintsStream) throws Exception {
-        MappingSet mappingSet = new MappingSet();
         List<ClassFingerprint> fingerprints = parseFingerprints(fingerprintsStream);
+        return resolveMappings(targetJar, fingerprints);
+    }
+
+    public static MappingSet resolveMappings(File targetJar, List<ClassFingerprint> fingerprints) throws Exception {
+        MappingSet mappingSet = new MappingSet();
 
         // Read all ClassNodes from target JAR
         Map<String, ClassNode> classMap = new HashMap<>();
@@ -68,7 +72,7 @@ public class HeuristicMappingResolver {
         return mappingSet;
     }
 
-    private static List<ClassFingerprint> parseFingerprints(InputStream stream) {
+    public static List<ClassFingerprint> parseFingerprints(InputStream stream) {
         List<ClassFingerprint> list = new ArrayList<>();
         Gson gson = new Gson();
         JsonObject root = gson.fromJson(new InputStreamReader(stream, StandardCharsets.UTF_8), JsonObject.class);

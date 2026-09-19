@@ -1,0 +1,19 @@
+{
+  "fingerprints": [
+    {
+      "namedClass": "com.spk.definitions.ItemDefinition",
+      "superClass": "java.lang.Object",
+      "stringConstants": [
+        "token (20",
+        " icon"
+      ]
+    },
+    {
+      "namedClass": "com.spk.definitions.ConfigProfile",
+      "superClass": "java.lang.Object",
+      "stringConstants": [
+        "ConfigProfile(id="
+      ]
+    }
+  ]
+}
