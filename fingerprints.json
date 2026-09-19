@@ -1,0 +1,25 @@
+{
+  "fingerprints": [
+    {
+      "namedClass": "com.spk.client.Client",
+      "superClass": "java.applet.Applet",
+      "interfaces": [
+        "java.lang.Runnable"
+      ],
+      "stringConstants": [
+        "SpawnPK Client",
+        "Loading client..."
+      ],
+      "fieldTypes": [
+        "Lcom/spk/mixins/api/event/EventBus;"
+      ]
+    },
+    {
+      "namedClass": "com.spk.client.Entity",
+      "superClass": "java.lang.Object",
+      "stringConstants": [
+        "Entity render error"
+      ]
+    }
+  ]
+}

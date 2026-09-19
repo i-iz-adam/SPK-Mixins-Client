@@ -99,7 +99,15 @@ public class SamplePlugin implements Plugin {
 
 ---
 
-## 🛠️ Built With
+## 🛡️ Update Resilience Strategy (Fingerprint Engine)
+
+When ProGuard obfuscates client updates, class and member names change (e.g., `rs.Client` becomes `a.b.a`). Standard static mappings break upon every client release.
+
+**SPK-Mixins-Client** solves this using an automated **Heuristic Fingerprinting & Deobfuscation Engine**:
+
+1. **Class Signature Matching**: Matches target classes based on constant pool string literals, superclasses, implemented interfaces, and field type signatures.
+2. **Dynamic `MappingSet` Generation**: Resolves target symbols automatically at startup via `fingerprints.json` before building `client-remapped.jar`.
+3. **Fallback Static Overrides**: Merges manual overrides from `mappings.json` when specific member signatures need explicit anchoring.
 
 Built with [Kestral](https://github.com/i-iz-adam/kestral) — an advanced agentic coding pair programmer.
 
