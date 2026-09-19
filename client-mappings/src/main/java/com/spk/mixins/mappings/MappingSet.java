@@ -35,8 +35,16 @@ public class MappingSet {
     }
 
     public void addMethodMapping(String obfClass, String obfMethod, String obfDesc, String namedClass, String namedMethod) {
-        fieldObfToNamed.put(obfClass + "." + obfMethod + obfDesc, namedMethod);
+        methodObfToNamed.put(obfClass + "." + obfMethod + obfDesc, namedMethod);
         methodNamedToObf.put(namedClass + "." + namedMethod + obfDesc, obfMethod);
+    }
+
+    public String mapFieldName(String obfClass, String obfField) {
+        return fieldObfToNamed.getOrDefault(obfClass + "." + obfField, obfField);
+    }
+
+    public String mapMethodName(String obfClass, String obfMethod, String descriptor) {
+        return methodObfToNamed.getOrDefault(obfClass + "." + obfMethod + descriptor, obfMethod);
     }
 
     public void addAccessTransformer(AccessTransformer at) {

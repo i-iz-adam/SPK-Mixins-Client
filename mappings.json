@@ -1,0 +1,35 @@
+{
+  "classes": [
+    {
+      "obfuscated": "rs.Client",
+      "named": "com.spk.client.Client",
+      "fields": [
+        {
+          "obfuscated": "p",
+          "named": "eventBus"
+        }
+      ],
+      "methods": [
+        {
+          "obfuscated": "a",
+          "descriptor": "()V",
+          "named": "initClient"
+        }
+      ]
+    }
+  ],
+  "accessTransformers": [
+    {
+      "class": "com.spk.client.Client",
+      "member": "eventBus",
+      "access": "PUBLIC",
+      "removeFinal": true
+    },
+    {
+      "class": "com.spk.client.Client",
+      "member": "initClient",
+      "access": "PUBLIC",
+      "removeFinal": false
+    }
+  ]
+}

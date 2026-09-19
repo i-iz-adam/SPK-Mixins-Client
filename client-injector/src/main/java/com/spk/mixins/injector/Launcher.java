@@ -1,33 +1,36 @@
 package com.spk.mixins.injector;
 
+import com.spk.mixins.injector.transform.JarRemapper;
 import com.spk.mixins.mappings.MappingParser;
 import com.spk.mixins.mappings.MappingSet;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.lang.reflect.Method;
 
 /**
- * Custom Launcher that loads C:\Users\naxos\.spawnpk-data\client.jar,
- * applies bytecode transformations & mixins, and launches the target client main entry point.
+ * Launcher pipeline that processes input obfuscated client.jar into client-remapped.jar,
+ * applying class/field/method renames and access transformers before running.
  */
 public class Launcher {
 
     private static final String DEFAULT_CLIENT_PATH = "C:\\Users\\naxos\\.spawnpk-data\\client.jar";
+    private static final String DEFAULT_OUTPUT_PATH = "client-remapped.jar";
 
     public static void main(String[] args) {
         System.out.println("==========================================");
-        System.out.println("   SPK Mixins Client Loader & Injector    ");
+        System.out.println("   SPK Mixins Client Loader & Remapper    ");
         System.out.println("==========================================");
 
-        File clientJar = new File(DEFAULT_CLIENT_PATH);
+        String inputPath = args.length > 0 ? args[0] : DEFAULT_CLIENT_PATH;
+        String outputPath = args.length > 1 ? args[1] : DEFAULT_OUTPUT_PATH;
+
+        File clientJar = new File(inputPath);
+        File outputJar = new File(outputPath);
+
         if (!clientJar.exists()) {
-            System.err.println("[Launcher Error] Target client JAR not found at: " + DEFAULT_CLIENT_PATH);
-            System.err.println("[Launcher Error] Please verify path or supply via command line argument.");
-        } else {
-            System.out.println("[Launcher] Target client JAR located (" + clientJar.length() + " bytes)");
+            System.err.println("[Launcher Warning] Target client JAR not found at: " + inputPath);
+            System.err.println("[Launcher Warning] Pass input path as argument: java -jar client-injector.jar <input.jar> <output.jar>");
+            return;
         }
 
         // Load mappings
@@ -36,15 +39,22 @@ public class Launcher {
         if (mappingFile.exists()) {
             try (FileInputStream fis = new FileInputStream(mappingFile)) {
                 mappings = MappingParser.parseJson(fis);
-                System.out.println("[Launcher] Mappings loaded successfully.");
+                System.out.println("[Launcher] Mappings loaded successfully from mappings.json.");
             } catch (Exception e) {
-                System.err.println("[Launcher] Failed to load mappings file.");
+                System.err.println("[Launcher Error] Failed to load mappings file.");
                 e.printStackTrace();
             }
         } else {
-            System.out.println("[Launcher] No mappings.json found. Running in passthrough mode.");
+            System.out.println("[Launcher] No mappings.json found. Processing in default passthrough mode.");
         }
 
-        System.out.println("[Launcher] Ready to inject and launch target client.");
+        try {
+            JarRemapper remapper = new JarRemapper(mappings);
+            remapper.processJar(clientJar, outputJar);
+            System.out.println("[Launcher] Remapped JAR output ready at: " + outputJar.getAbsolutePath());
+        } catch (Exception e) {
+            System.err.println("[Launcher Error] Failed during JAR remapping process.");
+            e.printStackTrace();
+        }
     }
 }
