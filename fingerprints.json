@@ -2,23 +2,56 @@
   "fingerprints": [
     {
       "namedClass": "com.spk.client.Client",
+      "superClass": "rs.c_0",
+      "interfaces": [
+        "java.lang.Runnable"
+      ],
+      "stringConstants": [
+        "Sorry, an error has occured whilst loading SpawnPK",
+        "https://spawnpk.net/forums/index.php?/forum/23-report-a-player/"
+      ],
+      "fieldTypes": [
+        "Lrs/eventbus/EventBus;"
+      ]
+    },
+    {
+      "namedClass": "com.spk.client.GameApplet",
       "superClass": "java.applet.Applet",
       "interfaces": [
         "java.lang.Runnable"
       ],
       "stringConstants": [
-        "SpawnPK Client",
-        "Loading client..."
-      ],
-      "fieldTypes": [
-        "Lcom/spk/mixins/api/event/EventBus;"
+        "Loaded image"
       ]
     },
     {
-      "namedClass": "com.spk.client.Entity",
+      "namedClass": "com.spk.client.ClientConfig",
       "superClass": "java.lang.Object",
       "stringConstants": [
-        "Entity render error"
+        "www.spawnpk.org",
+        "149.56.28.70"
+      ]
+    },
+    {
+      "namedClass": "com.spk.client.PathConfig",
+      "superClass": "java.lang.Object",
+      "stringConstants": [
+        ".spawnpk-data",
+        "screenshots"
+      ]
+    },
+    {
+      "namedClass": "com.spk.client.BankInterface",
+      "superClass": "java.lang.Object",
+      "stringConstants": [
+        "The Bank of SpawnPK"
+      ]
+    },
+    {
+      "namedClass": "com.spk.client.ItemLibraryInterface",
+      "superClass": "java.lang.Object",
+      "stringConstants": [
+        "Official SpawnPK Item Library"
       ]
     }
   ]

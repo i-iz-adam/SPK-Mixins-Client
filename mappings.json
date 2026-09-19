@@ -11,9 +11,31 @@
       ],
       "methods": [
         {
+          "obfuscated": "main",
+          "descriptor": "([Ljava/lang/String;)V",
+          "named": "main"
+        }
+      ]
+    },
+    {
+      "obfuscated": "rs.f.a",
+      "named": "com.spk.client.ClientConfig"
+    },
+    {
+      "obfuscated": "rs.p.a",
+      "named": "com.spk.client.PathConfig",
+      "fields": [
+        {
           "obfuscated": "a",
-          "descriptor": "()V",
-          "named": "initClient"
+          "named": "DATA_DIR"
+        },
+        {
+          "obfuscated": "b",
+          "named": "PLUGINS_DIR"
+        },
+        {
+          "obfuscated": "c",
+          "named": "SCREENSHOTS_DIR"
         }
       ]
     }
@@ -26,8 +48,14 @@
       "removeFinal": true
     },
     {
-      "class": "com.spk.client.Client",
-      "member": "initClient",
+      "class": "com.spk.client.PathConfig",
+      "member": "DATA_DIR",
+      "access": "PUBLIC",
+      "removeFinal": false
+    },
+    {
+      "class": "com.spk.client.PathConfig",
+      "member": "PLUGINS_DIR",
       "access": "PUBLIC",
       "removeFinal": false
     }
